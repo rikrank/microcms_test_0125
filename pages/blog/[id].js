@@ -36,12 +36,6 @@ export const getServerSideProps = async (context) => {
   const id = context.params.id;
   const data = await client.get({ endpoint: "blog", contentId: id });
 
-  // const data = await client.get({
-  //   endpoint: "news",
-  //   contentId: context.query.id,
-  //   queries: { draftKey: context.query.draftKey },
-  // });
-
   return {
     props: {
       blog: data,

@@ -1,14 +1,8 @@
 // src/pages/preview/index.tsx
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { client } from '../../libs/client';
 
-const NewsPage = () => {
-    const [data, setData] = useState()
-    useEffect(() => {
-        setData({
-            title: 'サンプルタイトル',
-            publishedAt: 'サンプル日時',
-        });
-    }, []);
+const NewsPage = ({ data }) => {
 
     return (
         <div>
@@ -19,3 +13,18 @@ const NewsPage = () => {
 }
 
 export default NewsPage
+
+export const getServerSideProps = async (context) => {
+
+    const data = await client.get({
+        endpoint: "blog",
+        contentId: context.query.id,
+        queries: { draftKey: context.query.draftKey },
+    });
+
+    return {
+        props: { data },
+    };
+};
+
+// https://microcms-test-0125.vercel.app/preview?slug={CONTENT_ID}

@@ -9,6 +9,7 @@ export default function Home({ blog }) {
           <li key={blog.id}>
             <Link href={`/blog/${blog.id}`}>
               <a>{blog.title}</a>
+              <p>Developブランチです</p>
             </Link>
           </li>
         ))}

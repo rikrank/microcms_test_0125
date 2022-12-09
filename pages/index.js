@@ -7,12 +7,10 @@ export default function Home({ blog }) {
       <ul>
         {blog.map((blog) => (
           <li key={blog.id}>
-            <Link href={`/blog/${blog.id}`}>
-              <a>{blog.title}</a>
-              <p>Developブランチです</p>
-            </Link>
+            <a>{blog.title}</a>
           </li>
         ))}
+        <p>Developブランチです</p>
       </ul>
     </div>
   );
